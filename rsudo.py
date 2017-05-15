@@ -124,7 +124,7 @@ def main():
     bot = RSudoCore(os.environ['TELE_TOKEN'], os.environ['ADMIN_USERNAME'])
     while True:
         bot.run()
-        time.sleep(0.1)
+        time.sleep(2)
 
 
 if __name__ == '__main__':
