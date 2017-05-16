@@ -12,7 +12,7 @@ import subprocess
 LOG = logging.getLogger('rsudo')
 LOG_FILE = 'rsudo.log'
 
-def sigint_handler(signal, frame):
+def sigbye_handler(signal, frame):
     LOG.info('Hey, you pressed CTRL-C, starting releasing LOG handlers...')
 
     for handler in LOG.handlers:
@@ -107,7 +107,8 @@ class RSudoCore:
 
 def main():
     # catch CTRL-C
-    signal.signal(signal.SIGINT, sigint_handler)
+    signal.signal(signal.SIGINT, sigbye_handler)
+    signal.signal(signal.SIGTERM, sigbye_handler)
 
     #setup logging
     LOG.setLevel(logging.INFO)
