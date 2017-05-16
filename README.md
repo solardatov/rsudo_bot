@@ -1,2 +1,2 @@
 # rsudo_bot
-just simple telegram bot for managing remote headless linux computers
+Simple telegram bot for executing some commands on remote headless linux computers
