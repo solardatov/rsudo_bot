@@ -33,9 +33,10 @@ class RSudoCore:
         self.admin_username = admin_username
 
         self.command_map = {
+            'start': self.help_str,
             'uptime': self.uptime ,
             'shutdown': self.shutdown,
-            'start': self.help_str,
+            'ifconfig': self.ifconfig,
         }
 
     def help_str(self):
@@ -57,7 +58,10 @@ class RSudoCore:
         return str(subprocess.run('uptime', stdout=subprocess.PIPE).stdout, 'utf-8')
 
     def shutdown(self):
-        return str(subprocess.run('uptime', stdout=subprocess.PIPE).stdout, 'utf-8')
+        return str(subprocess.run('shutdown', stdout=subprocess.PIPE).stdout, 'utf-8')
+
+    def ifconfig(self):
+        return str(subprocess.run('ifconfig', stdout=subprocess.PIPE).stdout, 'utf-8')
 
     def get_updates(self, offset=None):
         url = '{}{}?offset={}'.format(self.tele_url_prefix, 'getUpdates', offset)
